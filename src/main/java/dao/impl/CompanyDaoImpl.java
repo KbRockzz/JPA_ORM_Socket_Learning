@@ -38,8 +38,9 @@ public class CompanyDaoImpl extends AbstractGenericDaoImpl<Company, String> impl
         Company company = companyDao.findById("CP6");
         System.out.println(company);
 
-        System.out.println("\n=== countPerJobByCompany(TechCorp) ===");
-        Map<String, Long> stats = companyDao.countPerJobByCompany("TechCorp");
+        String companyName = company.getName();
+        System.out.println("\n=== countPerJobByCompany(" + companyName + ") ===");
+        Map<String, Long> stats = companyDao.countPerJobByCompany(companyName);
         stats.forEach((title, count) -> System.out.println(title + ": " + count));
     }
 }
