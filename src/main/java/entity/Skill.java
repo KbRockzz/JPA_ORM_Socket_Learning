@@ -10,7 +10,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString(exclude = "jobs")
+@ToString(exclude = {"jobs", "candidates"})
 
 @Entity
 @Table(name = "skills")
