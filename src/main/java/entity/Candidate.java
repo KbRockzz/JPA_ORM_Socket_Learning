@@ -16,7 +16,7 @@ import java.util.Set;
 @Table(name = "candidates")
 public class Candidate {
     @Id
-    @Column(name = "candidate_id")
+    @Column(name = "cand_id")
     private String id;
     private String name;
     private String email;

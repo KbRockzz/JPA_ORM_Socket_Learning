@@ -16,17 +16,18 @@ import java.util.Set;
 @Entity
 @Table(name = "applications")
 public class Application {
-    @Id
-    @Column(name = "application_id")
+    @Column(name = "appliedDate")
     private LocalDate appliedDate;
 
     @Enumerated(EnumType.STRING)
     private AppStatus status;
 
+    @Id
     @ManyToOne
     @JoinColumn(name = "job_id")
     private Job job;
 
+    @Id
     @ManyToOne
     @JoinColumn(name = "candidate_id")
     private Candidate candidate;
