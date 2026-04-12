@@ -1,5 +1,6 @@
 package entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,6 +13,8 @@ import java.util.Set;
 @Builder
 @ToString(exclude = "jobs")
 
+@JsonIgnoreProperties
+
 @Entity
 @Table(name = "companies")
 public class Company {
@@ -22,5 +25,6 @@ public class Company {
     private String industry;
 
     @OneToMany(mappedBy = "company")
+    @com.fasterxml.jackson.annotation.JsonIgnore
     private Set<Job> jobs;
 }

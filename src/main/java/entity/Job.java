@@ -27,6 +27,7 @@ public class Job {
 
     @ManyToOne
     @JoinColumn(name = "company_id")
+    @com.fasterxml.jackson.annotation.JsonIgnore
     private Company company;
 
     @ManyToMany

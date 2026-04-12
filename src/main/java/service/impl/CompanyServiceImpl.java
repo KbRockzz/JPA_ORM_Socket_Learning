@@ -12,8 +12,8 @@ import java.util.List;
 public class CompanyServiceImpl implements CompanyService {
     private CompanyDao companyDao;
 
-    public CompanyServiceImpl(CompanyDao companyDao) {
-        this.companyDao = new CompanyDaoImpl(Company.class);
+    public CompanyServiceImpl() {
+        this.   companyDao = new CompanyDaoImpl(Company.class);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class CompanyServiceImpl implements CompanyService {
         CompanyService companyService = new CompanyServiceImpl();
         List<CompanyDto> companyDtos = companyService.loadAll();
         for (CompanyDto companyDto : companyDtos) {
-            System.out.println(companyDto);
+            System.out.println(companyDto.getName());
         }
     }
 }
