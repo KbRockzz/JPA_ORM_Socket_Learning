@@ -34,12 +34,12 @@ public class CandidateDaoImpl extends AbstractGenericDaoImpl<Candidate, String> 
         // --- loadAll ---
         System.out.println("=== loadAll ===");
         List<Candidate> all = dao.loadALl();
-        all.forEach(System.out::println);
+        all.forEach(c -> System.out.println(c.getName()));
 
         // --- findById ---
         System.out.println("\n=== findById(C1) ===");
         Candidate c1 = dao.findById("C1");
-        System.out.println(c1);
+        System.out.println(c1.getName());
 
         // --- create ---
         System.out.println("\n=== create (C99) ===");
@@ -50,31 +50,32 @@ public class CandidateDaoImpl extends AbstractGenericDaoImpl<Candidate, String> 
                 .experience(1)
                 .build();
         dao.create(newCandidate);
-        System.out.println("Created: " + dao.findById("C99"));
+        System.out.println("Created: " + dao.findById("C99").getName());
 
         // --- update ---
         System.out.println("\n=== update (C99 experience -> 5) ===");
         newCandidate.setExperience(5);
         Candidate updated = dao.update(newCandidate);
-        System.out.println("Updated: " + updated);
+        System.out.println("Updated: " + updated.getName());
 
         // --- delete ---
         System.out.println("\n=== delete (C99) ===");
         boolean deleted = dao.delete("C99");
         System.out.println("Deleted: " + deleted);
-        System.out.println("After delete findById(C99): " + dao.findById("C99"));
+        Candidate afterDelete = dao.findById("C99");
+        System.out.println("After delete findById(C99): " + (afterDelete != null ? afterDelete.getName() : null));
 
         // --- findBySkillInOpenJobs ---
         System.out.println("\n=== findBySkillInOpenJobs(Java) ===");
         List<Candidate> javaInOpen = dao.findBySkillInOpenJobs("Java");
-        javaInOpen.forEach(System.out::println);
+        javaInOpen.forEach(c -> System.out.println(c.getName()));
 
         System.out.println("\n=== findBySkillInOpenJobs(Python) ===");
         List<Candidate> pythonInOpen = dao.findBySkillInOpenJobs("Python");
-        pythonInOpen.forEach(System.out::println);
+        pythonInOpen.forEach(c -> System.out.println(c.getName()));
 
         System.out.println("\n=== findBySkillInOpenJobs(SQL) ===");
         List<Candidate> sqlInOpen = dao.findBySkillInOpenJobs("SQL");
-        sqlInOpen.forEach(System.out::println);
+        sqlInOpen.forEach(c -> System.out.println(c.getName()));
     }
 }
